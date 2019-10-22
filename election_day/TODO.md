@@ -10,8 +10,14 @@
     - support_level # G1, G2 get knocked
     - voted_yet
     - knocker
-  - knoers
-   
+  - knockers
+    - list of fields to store about knockers
+        - forename
+        - surname
+        - email_address
+        - phone_number
+        - start_time
+        - end_time
 - fill views witout templates
 - create templates
 - 

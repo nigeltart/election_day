@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Question(models.Model):
+class Voter(models.Model):
     # RA2356
     elector_number = models.CharField("Elector Number", max_length=6)
     # Nigel
@@ -21,3 +21,17 @@ class Question(models.Model):
     #
     knocker = models.ForeignKey("knocker")
 
+
+class Knocker(models.Model):
+    # John
+    forename = models.CharField("Forename", max_length=20)
+    # Smith
+    surname = models.CharField("Surname", max_length=20)
+    # name@domain.com
+    email_address = models.CharField("Email address", max_length=256)
+    # 07123456789
+    phone_number = models.CharField("Phone number", max_length=15)
+    # 18:30
+    start_time = models.DateTimeField("Start time")
+    # 22:15
+    end_time = models.DateTimeField("End time")
