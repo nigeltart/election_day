@@ -1,14 +1,30 @@
 from django.shortcuts import render
+from knock_up.models import Voter
 
 # Create your views here.
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("knock-up index")
+
+    """
+    Admin will view all voters or assign voters to knockers
+    Teller will add voter, review voter or delete voter
+    Knocker will view their list of voters to knock, 
+        or delete a voter when they've voted
+    """
+    voters=Voter.objects.all()
+    list_of_voters = []
+    for v in voters:
+        list_of_voters.append("{} - {} {}".format(v.elector_number, v.forename, v.surname))
+
+    output = '<br> '.join(list_of_voters)
+    return HttpResponse(output)
+
+
 
 
 def logon(request):
-    return HttpResponse("log on as admin, teller or user")
+    return HttpResponse("log on as admin, teller or knocker")
 
 def teller_add_voter(request):
     return HttpResponse("ask for voter number")
