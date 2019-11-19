@@ -18,8 +18,11 @@ class Voter(models.Model):
     support_level = models.CharField("Support Level", max_length=2)
     # False / True
     voted_yet = models.BooleanField("Voted yet?", default=False)
-    #
-    knocker = models.ForeignKey("knocker")
+    # Voters should be unassigned by default
+    knocker = models.ForeignKey("Knocker", null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "{} {}".format(self.forename, self.surname)
 
 
 class Knocker(models.Model):
